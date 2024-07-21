@@ -1,6 +1,6 @@
 package com.user_api.services;
 
-import com.user_api.clients.CEPClient;
+import com.user_api.infra.clients.CEPClient;
 import com.user_api.exceptions.AddressNotFoundException;
 import com.user_api.model.entities.Address;
 import com.user_api.repositories.AddressRepository;

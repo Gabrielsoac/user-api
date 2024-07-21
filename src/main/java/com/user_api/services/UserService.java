@@ -1,7 +1,8 @@
 package com.user_api.services;
 
 import com.user_api.DTOs.RequestUser;
-import com.user_api.exceptions.UserAlreadyExistsException;
+import com.user_api.exceptions.UserEmailAlreadyExistsException;
+import com.user_api.exceptions.UsernameAlreadyExistsException;
 import com.user_api.exceptions.UserListIsEmptyException;
 import com.user_api.exceptions.UserNotFoundException;
 import com.user_api.model.entities.Address;
@@ -28,7 +29,10 @@ public class UserService {
        User newUser = new User(data.username(), data.password(), data.name(), data.email(), address);
 
        if (userRepository.existsByUsername(newUser.getUsername())) {
-           throw new UserAlreadyExistsException("User Already Exists");
+           throw new UsernameAlreadyExistsException("User Already Exists");
+       }
+       if(userRepository.existsByEmail(newUser.getEmail())){
+           throw new UserEmailAlreadyExistsException("Email Already in use");
        }
 
        userRepository.save(newUser);
