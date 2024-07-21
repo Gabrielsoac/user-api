@@ -28,8 +28,6 @@ public class Address {
         this.logradouro = address.logradouro();
         this.cep = address.cep();
     }
-
-
 }
 
 
