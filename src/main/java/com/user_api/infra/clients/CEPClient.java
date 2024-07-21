@@ -1,6 +1,6 @@
 package com.user_api.infra.clients;
 
-import com.user_api.DTOs.ResponseAddress;
+import com.user_api.DTOs.ResponseAddressDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CEPClient {
 
     @GetMapping("/{CEP}")
-    ResponseAddress getAddress(@PathVariable String CEP);
+    ResponseAddressDTO getAddress(@PathVariable String CEP);
 }

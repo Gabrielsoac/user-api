@@ -1,6 +1,6 @@
 package com.user_api.model.entities;
 
-import com.user_api.DTOs.ResponseAddress;
+import com.user_api.DTOs.ResponseAddressDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +21,7 @@ public class Address {
     private String logradouro;
 
 
-    public Address(ResponseAddress address) {
+    public Address(ResponseAddressDTO address) {
         this.bairro = address.bairro();
         this.cidade = address.cidade();
         this.estado = address.estado();
