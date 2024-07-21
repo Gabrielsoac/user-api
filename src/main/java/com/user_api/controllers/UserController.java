@@ -1,15 +1,14 @@
 package com.user_api.controllers;
 
-import com.user_api.DTOs.RequestUser;
-import com.user_api.model.entities.User;
+import com.user_api.DTOs.RequestUserDTO;
+import com.user_api.DTOs.ResponseAllUsersDTO;
+import com.user_api.DTOs.ResponseUserDTO;
 import com.user_api.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -19,17 +18,17 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<ResponseAllUsersDTO> getAllUsers() {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username){
+    public ResponseEntity<ResponseUserDTO> getUserByUsername(@PathVariable String username){
         return ResponseEntity.ok().body(userService.findUserByUsername(username));
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody RequestUser data) {
+    public ResponseEntity<ResponseUserDTO> createUser(@RequestBody RequestUserDTO data) {
         return new ResponseEntity<>(userService.saveNewUser(data), HttpStatus.CREATED);
     }
 
@@ -42,7 +41,7 @@ public class UserController {
 
     @PutMapping("/{username}")
     @Transactional
-    public ResponseEntity<User> updateUser(@PathVariable String username, @RequestBody RequestUser data) {
+    public ResponseEntity<ResponseUserDTO> updateUser(@PathVariable String username, @RequestBody RequestUserDTO data) {
         return ResponseEntity.ok().body(userService.updateUserByUserName(username, data));
     }
 
