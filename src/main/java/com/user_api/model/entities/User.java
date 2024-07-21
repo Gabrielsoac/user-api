@@ -3,10 +3,12 @@ package com.user_api.model.entities;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name="users")
 @NoArgsConstructor
+@ToString
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
@@ -16,7 +18,7 @@ public class User {
     private String name;
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public String getUsername() {
