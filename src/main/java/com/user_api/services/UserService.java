@@ -1,6 +1,8 @@
 package com.user_api.services;
 
-import com.user_api.DTOs.RequestUser;
+import com.user_api.DTOs.RequestUserDTO;
+import com.user_api.DTOs.ResponseAllUsersDTO;
+import com.user_api.DTOs.ResponseUserDTO;
 import com.user_api.exceptions.UserEmailAlreadyExistsException;
 import com.user_api.exceptions.UsernameAlreadyExistsException;
 import com.user_api.exceptions.UserListIsEmptyException;
@@ -22,7 +24,7 @@ public class UserService {
     private final AddressService addressService;
 
     //save new user
-    public User saveNewUser(RequestUser data) {
+    public ResponseUserDTO saveNewUser(RequestUserDTO data) {
        Address address = addressService.getAddress(data.cep());
        addressService.saveAddress(address);
 
@@ -36,32 +38,34 @@ public class UserService {
        }
 
        userRepository.save(newUser);
-       return newUser;
+       return new ResponseUserDTO(newUser.getName(), newUser.getEmail(), newUser.getAddress());
     }
     //find all users
-    public List<User> findAllUsers() {
-        if (userRepository.findAll().isEmpty()) {
+    public ResponseAllUsersDTO findAllUsers() {
+        List<ResponseUserDTO> userList = userRepository.findAll().stream().map(x -> new ResponseUserDTO(x.getName(), x.getEmail(), x.getAddress())).toList();
+        if (userList.isEmpty()) {
             throw new UserListIsEmptyException("Haven't Users for to List");
         }
-        return userRepository.findAll();
+        return new ResponseAllUsersDTO(userList);
     }
     //find user
-    public User findUserByUsername(String username) {
-        return getUserByUsername(username);
+    public ResponseUserDTO findUserByUsername(String username) {
+        User user = getUserByUsername(username);
+        return new ResponseUserDTO(user.getName(), user.getEmail(), user.getAddress());
     }
     // delete user
     public void deleteUserByUsername(String username) {
         userRepository.deleteUserByUsername(getUserByUsername(username).getUsername());
     }
     //update user
-    public User updateUserByUserName(String username, RequestUser data) {
+    public ResponseUserDTO updateUserByUserName(String username, RequestUserDTO data) {
         User user = getUserByUsername(username);
         user.setName(data.name());
         user.setUsername(data.username());
         user.setPassword(data.password());
         user.setEmail(data.email());
         user.setAddress(addressService.getAddress(data.cep()));
-        return user;
+        return new ResponseUserDTO(user.getName(), user.getEmail(), user.getAddress());
     }
     private User getUserByUsername(String username) {
         Optional<User> optionalUser = Optional.ofNullable(userRepository.findUserByUsername(username));
