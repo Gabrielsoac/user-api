@@ -60,11 +60,14 @@ public class UserService {
     //update user
     public ResponseUserDTO updateUserByUserName(String username, RequestUserDTO data) {
         User user = getUserByUsername(username);
+        Address address = addressService.getAddress(data.cep());
+        addressService.saveAddress(address);
         user.setName(data.name());
         user.setUsername(data.username());
         user.setPassword(data.password());
         user.setEmail(data.email());
-        user.setAddress(addressService.getAddress(data.cep()));
+        user.setAddress(address);
+        userRepository.save(user);
         return new ResponseUserDTO(user.getName(), user.getEmail(), user.getAddress());
     }
     private User getUserByUsername(String username) {
