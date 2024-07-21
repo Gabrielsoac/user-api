@@ -1,7 +1,7 @@
 package com.user_api.exceptions;
 
-public class UserAlreadyExistsException extends RuntimeException {
-    public UserAlreadyExistsException(String message) {
+public class UsernameAlreadyExistsException extends RuntimeException {
+    public UsernameAlreadyExistsException(String message) {
         super(message);
     }
 }
