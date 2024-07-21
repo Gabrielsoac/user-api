@@ -1,0 +1,7 @@
+CREATE TABLE addresses(
+    cep VARCHAR(255) PRIMARY KEY UNIQUE NOT NULL,
+    bairro VARCHAR(255) NOT NULL,
+    cidade VARCHAR(255) NOT NULL,
+    estado VARCHAR(255) NOT NULL,
+    logradouro VARCHAR(255) NOT NULL
+);

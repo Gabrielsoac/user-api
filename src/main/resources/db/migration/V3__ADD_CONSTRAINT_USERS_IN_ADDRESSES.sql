@@ -1,0 +1,4 @@
+ALTER TABLE users
+ADD CONSTRAINT FK_USERS_ADDRESS
+FOREIGN KEY (address_cep)
+REFERENCES addresses(cep);
