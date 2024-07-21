@@ -1,27 +1,33 @@
 package com.user_api.model.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.user_api.DTOs.ResponseAddress;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Entity(name = "adresses")
+@Entity(name = "addresses")
 @Table(name="addresses")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Address {
 
     @Id
-    private String CEP;
+    private String cep;
+
     private String bairro;
     private String cidade;
     private String estado;
     private String logradouro;
+
+
+    public Address(ResponseAddress address) {
+        this.bairro = address.bairro();
+        this.cidade = address.cidade();
+        this.estado = address.estado();
+        this.logradouro = address.logradouro();
+        this.cep = address.cep();
+    }
 
 
 }
