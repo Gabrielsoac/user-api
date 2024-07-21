@@ -1,4 +1,4 @@
-package com.user_api.clients;
+package com.user_api.infra.clients;
 
 import com.user_api.DTOs.ResponseAddress;
 import org.springframework.cloud.openfeign.FeignClient;
