@@ -24,9 +24,8 @@ public class AddressService {
     }
 
     public void saveAddress(Address address) {
-        if(addressRepository.existsById(address.getCep())){
-            return;
+        if(!addressRepository.existsById(address.getCep())){
+            addressRepository.save(address);
         }
-        addressRepository.save(address);
     }
 }
