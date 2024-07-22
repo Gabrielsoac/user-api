@@ -27,7 +27,6 @@ public class UserService {
     public ResponseUserDTO saveNewUser(RequestUserDTO data) {
        Address address = addressService.getAddress(data.cep());
        addressService.saveAddress(address);
-
        User newUser = new User(data.username(), data.password(), data.name(), data.email(), address);
 
        if (userRepository.existsByUsername(newUser.getUsername())) {
@@ -36,13 +35,12 @@ public class UserService {
        if(userRepository.existsByEmail(newUser.getEmail())){
            throw new UserEmailAlreadyExistsException("Email Already in use");
        }
-
        userRepository.save(newUser);
-       return new ResponseUserDTO(newUser.getName(), newUser.getEmail(), newUser.getAddress());
+       return new ResponseUserDTO(newUser.getUsername(), newUser.getName(), newUser.getEmail(), newUser.getAddress());
     }
     //find all users
     public ResponseAllUsersDTO findAllUsers() {
-        List<ResponseUserDTO> userList = userRepository.findAll().stream().map(x -> new ResponseUserDTO(x.getName(), x.getEmail(), x.getAddress())).toList();
+        List<ResponseUserDTO> userList = userRepository.findAll().stream().map(x -> new ResponseUserDTO(x.getUsername(), x.getName(), x.getEmail(), x.getAddress())).toList();
         if (userList.isEmpty()) {
             throw new UserListIsEmptyException("Haven't Users for to List");
         }
@@ -51,7 +49,7 @@ public class UserService {
     //find user
     public ResponseUserDTO findUserByUsername(String username) {
         User user = getUserByUsername(username);
-        return new ResponseUserDTO(user.getName(), user.getEmail(), user.getAddress());
+        return new ResponseUserDTO(user.getUsername(), user.getName(), user.getEmail(), user.getAddress());
     }
     // delete user
     public void deleteUserByUsername(String username) {
@@ -61,14 +59,14 @@ public class UserService {
     public ResponseUserDTO updateUserByUserName(String username, RequestUserDTO data) {
         User user = getUserByUsername(username);
         Address address = addressService.getAddress(data.cep());
-        addressService.saveAddress(address);
+        //addressService.saveAddress(address);
         user.setName(data.name());
         user.setUsername(data.username());
         user.setPassword(data.password());
         user.setEmail(data.email());
         user.setAddress(address);
         userRepository.save(user);
-        return new ResponseUserDTO(user.getName(), user.getEmail(), user.getAddress());
+        return new ResponseUserDTO(user.getUsername(), user.getName(), user.getEmail(), user.getAddress());
     }
     private User getUserByUsername(String username) {
         Optional<User> optionalUser = Optional.ofNullable(userRepository.findUserByUsername(username));
@@ -77,5 +75,4 @@ public class UserService {
         }
         return optionalUser.get();
     }
-
 }
