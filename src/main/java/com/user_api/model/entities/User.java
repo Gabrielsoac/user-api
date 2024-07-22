@@ -18,7 +18,7 @@ public class User {
     private String name;
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne //(cascade = CascadeType.ALL)
     private Address address;
 
     public String getUsername() {
