@@ -92,6 +92,7 @@ classDiagram
 
 
 ```
+## Exceptions
 
 ```mermaid
 classDiagram
