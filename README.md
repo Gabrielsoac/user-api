@@ -1,8 +1,15 @@
 # User API 
 Esta API fornece endpoints para operações CRUD em usuários.
 
+##Deploy 
+
+- Realizado no Railway utilizando um serviço para o postgres e outro para a própria aplicação
+- CI/CD realizado pelo próprio github
+
 Deploy: https://user-api-production-6d74.up.railway.app/
 OBS: Por favor, faça testes com moderação, é uma API para fins de estudos e utiliza o plano gratuito.
+
+
 
 ## Diagrama de Classes
 ```mermaid
