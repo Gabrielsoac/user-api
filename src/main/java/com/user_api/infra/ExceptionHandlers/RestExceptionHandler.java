@@ -29,9 +29,4 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private ResponseEntity<String> addressNotFoundExceptionHandler(AddressNotFoundException e){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
-
-    @ExceptionHandler(UserEmailAlreadyExistsException.class)
-    private ResponseEntity<String> userEmailAlreadyExistsExceptionHandler(UserEmailAlreadyExistsException e){
-           return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-    }
 }
