@@ -25,9 +25,8 @@ classDiagram
     class User {
         String id
         String username
-        String password
         String name
-        String email
+        String apresentation
         Address address
     }
 
@@ -76,17 +75,19 @@ classDiagram
 
     class RequestUserDTO {
         +String username()
-        +String password()
-        +String name()
-        +String email()
+        +String name()    
+        +String apresentation
         +String cep()
     }
 
     class ResponseUserDTO {
         +ResponseUserDTO(String name, String email, Address address)
         +String name
-        +String email
-        +Address address
+        +String username
+        +String apresentation
+        +String cidade
+        +String estado
+
     }
 
     class ResponseAllUsersDTO {
@@ -109,14 +110,12 @@ classDiagram
     %% Exceptions
     class AddressNotFoundException
     class UsernameAlreadyExistsException
-    class UserEmailAlreadyExistsException
     class UserListIsEmptyException
     class UserNotFoundException
 
     %% Relationships with Services
     AddressService ..> AddressNotFoundException : throws
     UserService ..> UsernameAlreadyExistsException : throws
-    UserService ..> UserEmailAlreadyExistsException : throws
     UserService ..> UserListIsEmptyException : throws
     UserService ..> UserNotFoundException : throws
 
@@ -126,46 +125,63 @@ classDiagram
 
 ## Endpoints
 
-### 1. Listar todos os usuários
+### 1. Listar todos os usuários (/user)
 Descrição: Retorna uma lista de todos os usuários.
 
-- URL: /user
 - Método HTTP: GET
 - Status: 200 OK
 - Body: ResponseAllUsersDTO - Um objeto contendo uma lista de todos os usuários.
-### 2. Obter usuário por nome de usuário
+
+### 2. Obter usuário por nome de usuário(/user/{username})
 Descrição: Retorna um usuário específico com base no nome de usuário fornecido.
 
-- URL: /user/{username}
 - Método HTTP: GET
 - Parâmetros de URL:
 - Status: 200 OK
 - Body: ResponseUserDTO - Um objeto contendo os detalhes do usuário solicitado.
-### 3. Criar um novo usuário
+
+### 3. Criar um novo usuário (/user)
+
 Descrição: Cria um novo usuário com base nos dados fornecidos.
 
-- URL: /user
 - Método HTTP: POST
 -Status: 201 Created
 - Body: ResponseUserDTO - Um objeto contendo os detalhes do usuário criado.
 
-### 4. Excluir usuário por nome de usuário
+Exemplo de JSON:
+
+    {
+    "username": "usuário",
+    "name": "usuário 1",
+    "apresentation" : "eu sou o usuário",
+    "cep": "73105904" 
+    }
+
+### 4. Excluir usuário por nome de usuário (/user/{username})
 Descrição: Exclui um usuário com base no nome de usuário fornecido.
 
-- URL: /user/{username}
 - Método HTTP: DELETE
 - Parâmetros de URL: username - Nome de usuário do usuário que você deseja excluir.
 - Status: 200 OK
 - Body: HttpStatus.OK
-### 5. Atualizar um usuário
+- 
+### 5. Atualizar um usuário(/user/{username})
 Descrição: Atualiza os dados de um usuário com base no nome de usuário fornecido.
 
-- URL: /user/{username}
 - Método HTTP: PUT
 - Parâmetros de URL:username - Nome de usuário do usuário que você deseja atualizar.
 - RequestUserDTO - Um objeto contendo os novos dados do usuário.
 - Status: 200 OK
 - Body: ResponseUserDTO - Um objeto contendo os detalhes atualizados do usuário.
+
+Exemplo de JSON:
+    
+    {
+      "username": "usuário",
+      "name": "usuário 1",
+      "apresentation" : "eu sou o usuário",
+      "cep": "73105904"
+      }
 
 ## Tecnologias Utilizadas
 
