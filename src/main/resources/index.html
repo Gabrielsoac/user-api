@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User API</title>
+    <link rel="stylesheet" href="assets/css/var.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <script src="https://kit.fontawesome.com/abe42b26ac.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <section class="menu-container">
+
+        <div class="first-container">
+            <h1>User Api</h1>
+
+            <div class="options-container">
+                <button class="new-users">Cadatrar usuário</button>
+                <button class="list-users">Listar usuários</button>
+                <button class="get-user">Consultar um usuários</button>
+            </div>
+
+        </div>
+
+        <div class="new-user-container displayNone">
+            <h2>Cadastrar Usuário</h2>
+
+            <form action="" onsubmit="newUser(event)">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" class="inputsForm">
+                </div>
+
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" name="name" class="inputsForm">
+                </div>
+
+                <div>
+                    <label for="apresentation">Apresentação:</label>
+                    <input type="text" name="apresentation" class="inputsForm">
+                </div>
+
+                <div>
+                    <label for="cep">CEP:</label>
+                    <input type="text" name="cep" class="inputsForm">
+                </div>
+
+                
+                
+                <div class="btns-container">
+                    <button type="submit">Cadastrar</button>
+
+                    <span class="newUserSucess displayNone">Usuário cadastrado com sucesso</span>
+
+                    <button class="backToMenu"><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="list-all-users-container displayNone">
+            <h2>Todos os usuários</h2>
+
+            <div class="list-user-container">
+
+            </div>
+        </div>
+
+        <div class="get-user-container displayNone">
+            <h2>Usuário</h2>
+
+            <div class="get-user-view">
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <script src="assets/scripts/index.js"></script>
+</body>
+</html>
