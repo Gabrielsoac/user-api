@@ -11,20 +11,20 @@
 </head>
 <body>
     
-    <section class="menu-container">
+    <section class="menu-container container-primary">
 
-        <div class="first-container">
+        <div class="first-container container-primary">
             <h1>User Api</h1>
 
             <div class="options-container">
                 <button class="new-users">Cadatrar usuário</button>
                 <button class="list-users">Listar usuários</button>
-                <button class="get-user">Consultar um usuários</button>
+                <button class="get-user">Consultar um usuário</button>
             </div>
 
         </div>
 
-        <div class="new-user-container displayNone">
+        <div class="new-user-container displayNone container-primary">
             <h2>Cadastrar Usuário</h2>
 
             <form action="" onsubmit="newUser(event)">
@@ -40,7 +40,7 @@
 
                 <div>
                     <label for="apresentation">Apresentação:</label>
-                    <input type="text" name="apresentation" class="inputsForm">
+                    <textarea name="apresentation" class="inputsForm"></textarea>
                 </div>
 
                 <div>
@@ -49,32 +49,50 @@
                 </div>
 
                 
-                
                 <div class="btns-container">
-                    <button type="submit">Cadastrar</button>
-
                     <span class="newUserSucess displayNone">Usuário cadastrado com sucesso</span>
+    
+                    <span class="newUserError displayNone">Usuário não cadastrado</span>
 
-                    <button class="backToMenu"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="new-submit" type="submit">Cadastrar</button>
                 </div>
             </form>
 
+            <button class="backToMenu"><i class="fa-solid fa-arrow-left"></i></button>
+
         </div>
 
-        <div class="list-all-users-container displayNone">
+        <div class="list-all-users-container displayNone container-primary">
             <h2>Todos os usuários</h2>
-
+            
             <div class="list-user-container">
 
+                <i style="position: relative; bottom: -80px;" class="fa-solid fa-spinner fa-spin-pulse fa-2xl spinner"></i>
+            </div>
+
+            <div class="btns-container">
+                <button class="backToMenu"><i class="fa-solid fa-arrow-left"></i></button>
             </div>
         </div>
 
-        <div class="get-user-container displayNone">
+        <div class="get-user-container displayNone container-primary">
             <h2>Usuário</h2>
 
-            <div class="get-user-view">
+            <div class="form-get-user">
+                <label for="">Username:</label>
+                <input type="text" placeholder="Digite o username" name="username" class="username inputsForm">
+
+                <button class="btnGetUser">Pesquisar</button>
+            </div>
+
+            <div class="get-user-view displayNone">
+
+                <i style="position: relative; bottom: 5px;" class="fa-solid fa-spinner fa-spin-pulse fa-2xl spinner"></i>
 
             </div>
+
+            <button class="backToMenu"><i class="fa-solid fa-arrow-left"></i></button>
+
         </div>
 
 
