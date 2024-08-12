@@ -160,17 +160,24 @@ async function listAllUser() {
 
 async function getUser() {
 
-    getUserView.classList.toggle('displayNone')
-    
     const username = document.querySelector('.username').value
     const path = '/' + username
+
+    if (username === '') {
+        getUserView.innerHTML = 'Usuário em branco'
+        getUserView.classList.toggle('displayNone')
+        return 
+    }
+
+    getUserView.classList.toggle('displayNone')
+    
 
     
     try {
         const data = await api(path, 'GET')
 
         if (data.status) {
-            getUserView.innerHTML = 'Usuário não encontrato'
+            getUserView.innerHTML = 'Usuário não encontrado'
             return
         }
 

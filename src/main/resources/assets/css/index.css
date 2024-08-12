@@ -175,19 +175,18 @@ input, textarea{
 .get-user-view-span {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: nowrap;
     flex: 1 0 20%;
-
-    border: 1px solid var(--bg-color);
-
+    
     font-size: clamp(1em, 0.8vw, 5em);
-  
-
-    padding: 5px 10px;
-    width: 100%;
-    min-width: auto;
-
+    
+    padding: 10px;
+    min-width: 100px;
+    border: 1px solid var(--bg-color);
+    
     overflow-y: scroll;
     scrollbar-width: none;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
