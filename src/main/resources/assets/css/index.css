@@ -1,0 +1,192 @@
+
+.container-primary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    background-color: var(--modal-color);
+
+    border-radius: 20px;
+
+    min-height: 300px;
+    padding: 10px;
+
+    transition: all 300ms ease-in-out;
+}
+
+
+.get-user-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--modal-color);
+
+    border-radius: 20px;
+
+    height: 100%;
+
+    transition: all 300ms ease-in-out;
+}
+
+
+
+.menu-container h1, h2 {
+    color: var(--title-color);
+    font-size: 2em;
+}
+
+.list-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    min-height: 200px;
+    padding: 20px;
+}
+
+.options-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.options-container button{
+    flex: 1 0 200px;
+}
+
+button {
+    padding: 20px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+
+    background-color: var(--btn-color);
+    font-size: 1rem;
+    color: white;
+
+    cursor: pointer;
+}
+
+button:hover {
+    transform: translate(0px, -5px);
+    box-shadow: 5px 5px 5px #7e03ab;
+}
+
+.new-user-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    font-size: 1.5em;
+
+
+}
+
+.new-user-container form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 500;
+}
+
+input, textarea{
+    padding: 10px;
+    font-size: 1em;
+    width: 20vw;
+    min-width: 250px;
+
+    border-radius: 10px;
+    border: 1px solid var(--bg-color);
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+.displayNone {
+    display: none;
+}
+ 
+.line-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.list-user-container div, .get-user-view  div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.line-user span, .list-user-container span, .get-user-viewApresentation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    border: 1px solid var(--bg-color);
+
+    font-size: clamp(1em, 0.8vw, 5em);
+  
+    height: 60px;
+    width: 15vw;
+    min-height: 50px;
+    min-width: 80px;
+    padding: 5px 10px;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+    text-overflow: ellipsis;
+}
+
+.get-user-viewApresentation {
+    width: 100%;
+}
+
+.form-get-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.get-user-view-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex: 1 0 20%;
+    
+    font-size: clamp(1em, 0.8vw, 5em);
+    
+    padding: 10px;
+    min-width: 100px;
+    border: 1px solid var(--bg-color);
+    
+    overflow-y: scroll;
+    scrollbar-width: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

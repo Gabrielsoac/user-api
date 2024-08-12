@@ -1,0 +1,59 @@
+:root {
+    --bg-color: #025573;
+    --modal-color: white;
+    --title-color: #313131;
+    --btn-color: #603fa0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+body {
+    background-color: var(--bg-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 50px 10px;
+
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    overflow-x: hidden;
+
+}
+
+
+.backToMenu {
+    background-color: var(--bg-color);
+}
+
+.newUserSucess {
+    color: green;
+}
+
+.newUserError {
+    color: red;
+}
+
+.displayNone {
+    display: none;
+}
+
+.bold {
+    font-weight: 700;
+}
