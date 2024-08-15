@@ -1,7 +1,10 @@
 # User API 
 Esta API fornece endpoints para operações CRUD em usuários.
 
-##Deploy 
+Ao se cadastrar, será notificado o seu cadastro neste grupo do Telegram, entre para ver a notificação acontecer :)
+https://t.me/+GathQNdQ8WY1YjIx
+
+## Deploy 
 
 - Realizado no Railway utilizando um serviço para o postgres e outro para a própria aplicação
 - CI/CD realizado pelo próprio github
