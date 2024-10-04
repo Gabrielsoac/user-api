@@ -4,7 +4,6 @@ import com.user_api.DTOs.RequestTelegramMessageDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @FeignClient(name = "TelegramClient", url = "https://api.telegram.org/bot7170603575:AAETNwWqWAgAMZ_V_PqL_Kp0UNLm18vQzBA")
 public interface TelegramClient {

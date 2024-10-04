@@ -2,14 +2,9 @@ package com.user_api.model.entities;
 
 import com.user_api.DTOs.ResponseAddressDTO;
 import jakarta.persistence.*;
-import lombok.*;
 
 @Entity(name = "addresses")
 @Table(name="addresses")
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 public class Address {
 
     @Id
@@ -28,6 +23,32 @@ public class Address {
         this.logradouro = address.logradouro();
         this.cep = address.cep();
     }
+
+    public Address(){
+
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    
 }
 
 
